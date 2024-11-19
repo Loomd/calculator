@@ -5,7 +5,9 @@
 #define PARSER_H
 
 namespace parser {
-
+    class Parser {
+        public:
+            
+    };
 }
-
 #endif

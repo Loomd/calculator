@@ -7,19 +7,28 @@
 #include <string>
 
 namespace history {
-    class History {
-        public:
-            std::vector<int, std::string> history_log;
+class History {
+public:
 
-            std::vector<int, std::string> display_history() const;
+	struct Entry {
+		int index;                       // Line number
+		std::string expression;          // Full mathematical expression
+		std::vector<double> operands;    // Operands used in the expression
+		char operation;                  // Operator (e.g., '+', '*')
+		double result;                   // Computation result
+	};
+	std::vector<Entry> history_log;
 
-            int use_previous_result(int index) const;
+	void add_entry(int index, std::string expression, double result) const;
 
-            void clear_history() const;
+	std::vector<Entry> display_history();
 
-            void save_history(int index, std::string expression) const;
+	int use_previous_result(int index) const;
 
-    };
+	void clear_history() const;
+
+
+};
 }
 
 #endif

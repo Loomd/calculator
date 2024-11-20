@@ -1,5 +1,5 @@
 # calculator
-**Final Project: command line calculator**
-**By Aaron Hunter**
+**Final Project:** command line calculator
+**Author:** Aaron Hunter
 ---
 #

@@ -1,5 +1,4 @@
-# calculator
-**Final Project:** command line calculator
-**Author:** Aaron Hunter
+# Calculator
+**Author:** Aaron Hunter  
 ---
 #

@@ -1,10 +1,18 @@
-// Entry point for calculator program.
+/*
+** @brief Main file for the calculator program
+** houses initialized objects, and handles program flow.
+*/
 #include "../include/calculator.h"
 #include "../include/parser.h"
 #include "../include/history.h"
 #include <stdexcept>
 
 int main(){
+    /* 
+    ** @brief Object initialization
+    ** modular handling of functionality, implemented separate classes to handle 
+    ** related operations, easier to maintain and implement extended functionality.
+    */
     calculator::Calculator calculator;
     parser::Parser parser;
     history::History history;
@@ -31,11 +39,8 @@ int main(){
             }
 
             double result = parser.evaluateSimpleExpression(user_input, calculator, history);
-            //history.add_entry(index, user_input, result);
             std::cout<<result<<"\n";
 
-
-            //index++;
         }catch(const std::invalid_argument& error){
             std::cout<<"\033[31mError: "<<error.what()<<"\033[0m\n";
         }

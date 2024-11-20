@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Vs code crap
+c_cpp_properties.json
+launch.json
+settings.json

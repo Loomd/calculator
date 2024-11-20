@@ -6,29 +6,26 @@
 #include <vector>
 #include <string>
 
-namespace history {
-class History {
-public:
+namespace history{
+	class History{
+		public:
+			struct Entry{
+				int index;                       // Line number
+				std::string expression;          // Full mathematical expression
+				std::vector<double> operands;    // Operands used in the expression
+				char operation;                  // Operator (e.g., '+', '*')
+				double result;                   // Computation result
+			};
 
-	struct Entry {
-		int index;                       // Line number
-		std::string expression;          // Full mathematical expression
-		std::vector<double> operands;    // Operands used in the expression
-		char operation;                  // Operator (e.g., '+', '*')
-		double result;                   // Computation result
+			std::vector<Entry> history_log;
+
+			void add_entry(std::string expression, double result);
+
+			void display_history() const;
+
+			int use_previous_result(int index) const;
+
+			void clear_history();
 	};
-	std::vector<Entry> history_log;
-
-	void add_entry(int index, std::string expression, double result) const;
-
-	std::vector<Entry> display_history();
-
-	int use_previous_result(int index) const;
-
-	void clear_history() const;
-
-
-};
 }
-
 #endif

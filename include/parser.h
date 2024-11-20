@@ -3,16 +3,17 @@
 
 #ifndef PARSER_H
 #define PARSER_H
+#include "../include/calculator.h"
+#include "../include/history.h"
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "../include/calculator.h"
 
 namespace parser {
     class Parser {
         public:
             std::istringstream buffer(std::string user_input);
-	        double evaluateSimpleExpression(const std::string& input, calculator::Calculator& calc);
+	        double evaluateSimpleExpression(const std::string& input, calculator::Calculator& calc, history::History& history);
     };
 }
 #endif

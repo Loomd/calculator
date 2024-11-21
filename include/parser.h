@@ -11,8 +11,9 @@ namespace parser {
     class Parser {
         public:
 
-	        double evaluateSimpleExpression(const std::string& input, calculator::Calculator& calc, history::History& history);
-            double evaluateSquareRoot(const std::string& input, calculator::Calculator& calc, history::History& history);
+	        double evaluateSimpleExpression(const std::string& input, calculator::Calculator& calculator, history::History& history);
+            double evaluateSquareRoot(const std::string& input, calculator::Calculator& calculator, history::History& history);
+            double usePriorAnswer(const std::string& input, calculator::Calculator& calcualtor, history::History& history);
     };
 }
 #endif

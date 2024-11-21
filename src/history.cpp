@@ -23,7 +23,7 @@ namespace history{
         history_log.push_back(record);
     }
 
-	int History::use_previous_result(int index) const { return history_log[index].result; }
+	int History::use_previous_result(int index) const { return history_log[index - 1].result; }
 
 
 }

@@ -52,7 +52,7 @@ namespace parser {
 	    				throw std::invalid_argument("Error: Invalid expression, use format: 'operand' 'operator' 'operand'.\033[0m");
 	    			}
             }
-		throw std::invalid_argument("\033[31mError: Invalid operation (use '+', '-', '*', '/', '^').\033[0m");
+	throw std::invalid_argument("\033[31mError: Invalid operation (use '+', '-', '*', '/', '^').\033[0m");
     }
     
     double Parser::evaluateSquareRoot(const std::string& user_input, calculator::Calculator& calculator, history::History& history){
@@ -77,9 +77,33 @@ namespace parser {
             return calculator.squareRoot(evaluateSimpleExpression(inner, calculator, history));
         }
 
-        //If there's only a number.
-        double result = calculator.squareRoot(operand);
+    	//If there's only a number.
+    	double result = calculator.squareRoot(operand);
         history.add_entry("sqrt(" + std::to_string(operand) + ")", result);
-        return result;
+    return result;
     }
+
+	double Parser::usePriorAnswer(const std::string& user_input, calculator::Calculator& calculator, history::History& history){
+		double index{0.0}, operand_b{0.0}, result{0.0};
+	    char symbol{' '}, operation{' '};
+		std::string expression{" "};
+	    std::istringstream buffer{user_input};
+
+		if(buffer>>symbol>>index>>operation>>operand_b){
+			double prior_result = history.use_previous_result(index);
+			
+			switch(operation){
+				case '+': result = calculator.addition(prior_result, operand_b); break;
+				case '-': result = calculator.subtraction(prior_result, operand_b); break;
+				case '*': result = calculator.multiplication(prior_result, operand_b); break;
+				case '/': result = calculator.division(prior_result, operand_b); break;
+				case '^': result = calculator.exponentiation(prior_result, operand_b); break;
+			}
+
+			expression = "@" + std::to_string(int(index)) + " " + operation + " " + std::to_string(operand_b);
+			history.add_entry(expression, result);
+			return result;
+		}
+	throw std::invalid_argument("\033[31mError: Invalid operation (use '+', '-', '*', '/', '^').\033[0m");
+	}
 }

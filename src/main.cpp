@@ -47,6 +47,8 @@ int main(){
 
             //Check if the user input contains "sqrt" within the string.
             if(user_input.find("sqrt") != std::string::npos) result = parser.evaluateSquareRoot(user_input, calculator, history);
+            //Check and see if user wants to use a prior answer.
+            else if(user_input.find("@") != std::string::npos) result = parser.usePriorAnswer(user_input, calculator, history);
             //Otherwise, evaluate a simple mathematical expression.
             else result = parser.evaluateSimpleExpression(user_input, calculator, history);
 

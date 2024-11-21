@@ -6,6 +6,7 @@
 #include "../include/parser.h"
 #include "../include/history.h"
 #include <stdexcept>
+#include <iostream>
 
 int main(){
     /* 
@@ -19,6 +20,7 @@ int main(){
 
     bool running{true};
     std::string user_input;
+    double result{0.0};
 	//int index{1};
     calculator.display_menu();
 
@@ -36,9 +38,18 @@ int main(){
             }else if(user_input == "history"){
                 history.display_history();
                 continue;
+            }else if(user_input == "clear"){
+                history.clear_history();
+                continue;
             }
 
-            double result = parser.evaluateSimpleExpression(user_input, calculator, history);
+            /**************NOTE: BUG WITH STORING HISTORY OF SQUARE ROOT EXPRESSIONS**************/
+
+            //Check if the user input contains "sqrt" within the string.
+            if(user_input.find("sqrt") != std::string::npos) result = parser.evaluateSquareRoot(user_input, calculator, history);
+            //Otherwise, evaluate a simple mathematical expression.
+            else result = parser.evaluateSimpleExpression(user_input, calculator, history);
+
             std::cout<<result<<"\n";
 
         }catch(const std::invalid_argument& error){

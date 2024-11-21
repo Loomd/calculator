@@ -5,15 +5,14 @@
 #define PARSER_H
 #include "../include/calculator.h"
 #include "../include/history.h"
-#include <sstream>
-#include <iostream>
 #include <string>
 
 namespace parser {
     class Parser {
         public:
-            std::istringstream buffer(std::string user_input);
+
 	        double evaluateSimpleExpression(const std::string& input, calculator::Calculator& calc, history::History& history);
+            double evaluateSquareRoot(const std::string& input, calculator::Calculator& calc, history::History& history);
     };
 }
 #endif

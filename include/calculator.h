@@ -20,8 +20,9 @@ namespace calculator{
 
 			double exponentiation(double operand_a, double operand_b);
 
+			double squareRoot(double expression);
+
 			/* Future implementation.
-			** double square_root(double expression) const;
 			** double logic_evaluation(std::string expression) const;
 			** const int pi{3.14159265358979323846264338327950288};
 			** double trigonometric_evaluation(std::string expression) const;

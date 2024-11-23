@@ -4,6 +4,9 @@
 
 #include "../include/history.h"
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <cmath>
 
 namespace history{
 
@@ -15,7 +18,7 @@ namespace history{
 
 	void History::clear_history() { history_log.clear(); }
 
-    void History::add_entry(std::string expression, double result){
+    void History::add_entry(std::string expression, double result) {
         Entry record;
         record.expression = expression;
         record.result = result;

@@ -11,7 +11,7 @@
 
 namespace parser {
     
-    double Parser::evaluateSimpleExpression(const std::string& user_input, calculator::Calculator& calculator, history::History& history){
+    double Parser::evaluateSimpleExpression(const std::string& user_input, calculator::Calculator& calculator, history::History& history, bool log_history){
         double operand_a{0.0}, operand_b{0.0}, result{0.0};
 	    char operation{' '};
 		std::string expression{" "};
@@ -21,31 +21,31 @@ namespace parser {
 	    			case '+':
 						result = calculator.addition(operand_a, operand_b);
 						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
-						history.add_entry(expression, result);
+						if(log_history) history.add_entry(expression, result);
 						return result;
 	    				//break;
 	    			case '-':
 						result = calculator.subtraction(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
-						history.add_entry(expression, result);
+						if(log_history) history.add_entry(expression, result);
 						return result;
 	    				//break;
 	    			case '*':
 						result = calculator.multiplication(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
-						history.add_entry(expression, result);
+						if(log_history) history.add_entry(expression, result);
 						return result;
 	    				//break;
 	    			case '/':
 						result = calculator.division(operand_a, operand_b);
 						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
-						history.add_entry(expression, result);
+						if(log_history) history.add_entry(expression, result);
 						return result;
 	    				//break;
 	    			case '^':
 						result = calculator.exponentiation(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + "  " + operation + " "+ std::to_string(operand_b);
-						history.add_entry(expression, result);
+						if(log_history) history.add_entry(expression, result);
 						return result;
 	    				//break;
 	    			default :
@@ -55,7 +55,7 @@ namespace parser {
 	throw std::invalid_argument("\033[31mError: Invalid operation (use '+', '-', '*', '/', '^').\033[0m");
     }
     
-    double Parser::evaluateSquareRoot(const std::string& user_input, calculator::Calculator& calculator, history::History& history){
+    double Parser::evaluateSquareRoot(const std::string& user_input, calculator::Calculator& calculator, history::History& history, bool log_history){
         //Find index of open parenthesis
         size_t openParenPos = user_input.find('(');
 		//Find index of closing parenthesis.
@@ -71,19 +71,21 @@ namespace parser {
         double operand;
         buffer>>operand;
 
-        //Check if there's more to read, indicating an expression
+		//Check if there's more to read, indicating an expression
         if(!buffer.eof()){
-            //Evaluate the expression.
-            return calculator.squareRoot(evaluateSimpleExpression(inner, calculator, history));
+            double result_of_expression = evaluateSimpleExpression(inner, calculator, history, false);
+            double result_of_sqrt = calculator.squareRoot(result_of_expression);
+            if(log_history) history.add_entry("sqrt(" + inner + ")", result_of_sqrt);
+            return result_of_sqrt;
         }
 
     	//If there's only a number.
     	double result = calculator.squareRoot(operand);
-        history.add_entry("sqrt(" + std::to_string(operand) + ")", result);
+        if(log_history) history.add_entry("sqrt(" + std::to_string(operand) + ")", result);
     return result;
     }
 
-	double Parser::usePriorAnswer(const std::string& user_input, calculator::Calculator& calculator, history::History& history){
+	double Parser::usePriorAnswer(const std::string& user_input, calculator::Calculator& calculator, history::History& history, bool log_history){
 		double index{0.0}, operand_b{0.0}, result{0.0};
 	    char symbol{' '}, operation{' '};
 		std::string expression{" "};
@@ -101,7 +103,7 @@ namespace parser {
 			}
 
 			expression = "@" + std::to_string(int(index)) + " " + operation + " " + std::to_string(operand_b);
-			history.add_entry(expression, result);
+			if(log_history) history.add_entry(expression, result);
 			return result;
 		}
 	throw std::invalid_argument("\033[31mError: Invalid operation (use '+', '-', '*', '/', '^').\033[0m");

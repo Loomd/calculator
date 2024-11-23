@@ -19,6 +19,8 @@ namespace history{
 
 			std::vector<Entry> history_log;
 
+			void add_entry(std::string expression, double result, double result2);
+
 			void add_entry(std::string expression, double result);
 
 			void display_history() const;

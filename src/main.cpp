@@ -43,14 +43,12 @@ int main(){
                 continue;
             }
 
-            /**************NOTE: BUG WITH STORING HISTORY OF SQUARE ROOT EXPRESSIONS**************/
-
             //Check if the user input contains "sqrt" within the string.
-            if(user_input.find("sqrt") != std::string::npos) result = parser.evaluateSquareRoot(user_input, calculator, history);
+            if(user_input.find("sqrt") != std::string::npos) result = parser.evaluateSquareRoot(user_input, calculator, history, true);
             //Check and see if user wants to use a prior answer.
-            else if(user_input.find("@") != std::string::npos) result = parser.usePriorAnswer(user_input, calculator, history);
+            else if(user_input.find("@") != std::string::npos) result = parser.usePriorAnswer(user_input, calculator, history, true);
             //Otherwise, evaluate a simple mathematical expression.
-            else result = parser.evaluateSimpleExpression(user_input, calculator, history);
+            else result = parser.evaluateSimpleExpression(user_input, calculator, history, true);
 
             std::cout<<result<<"\n";
 

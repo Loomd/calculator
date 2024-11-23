@@ -1,6 +1,5 @@
 /* @brief Parser implementation
-** Conditionally reads user input and passes along to appropriate functions.
-** Error handling, using try{}catch{}, to avoid program crashes and inform user of proper program usage.
+** Reads user input and passes along to appropriate functions.
 */
 
 #include "../include/parser.h"
@@ -20,27 +19,27 @@ namespace parser {
 	    			switch (operation){
 	    			case '+':
 						result = calculator.addition(operand_a, operand_b);
-						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
+						expression = history.formatNumber(operand_a) + " " + operation + " " + history.formatNumber(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
 	    			case '-':
 						result = calculator.subtraction(operand_a, operand_b);
-	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
+	    				expression = history.formatNumber(operand_a) + " " + operation + " " + history.formatNumber(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
 	    			case '*':
 						result = calculator.multiplication(operand_a, operand_b);
-	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
+	    				expression = history.formatNumber(operand_a) + " " + operation + " " + history.formatNumber(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
 	    			case '/':
 						result = calculator.division(operand_a, operand_b);
-						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
+						expression = history.formatNumber(operand_a) + " " + operation + " " + history.formatNumber(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
 	    			case '^':
 						result = calculator.exponentiation(operand_a, operand_b);
-	    				expression = std::to_string(operand_a) + "  " + operation + " "+ std::to_string(operand_b);
+	    				expression = history.formatNumber(operand_a) + "  " + operation + " "+ history.formatNumber(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
 	    			default :
@@ -76,8 +75,8 @@ namespace parser {
 
     	//If there's only a number.
     	double result = calculator.squareRoot(operand);
-        if(log_history) history.add_entry("sqrt(" + std::to_string(operand) + ")", result);
-    return result;
+        if(log_history) history.add_entry("sqrt(" + history.formatNumber(operand) + ")", result);
+        return result;
     }
 
 	double Parser::usePriorAnswer(const std::string& user_input, calculator::Calculator& calculator, history::History& history, bool log_history){
@@ -97,7 +96,7 @@ namespace parser {
 				case '^': result = calculator.exponentiation(prior_result, operand_b); break;
 			}
 
-			expression = "@" + std::to_string(int(index)) + " " + operation + " " + std::to_string(operand_b);
+			expression = "@" + std::to_string(int(index)) + " " + operation + " " + history.formatNumber(operand_b);
 			if(log_history) history.add_entry(expression, result);
 			return result;
 		}

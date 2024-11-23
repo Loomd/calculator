@@ -26,7 +26,7 @@ namespace history{
         record.expression = expression;         //What the user typed
         record.result = result;                 //The answer
         record.index = history_log.size() + 1;  //Number them starting at 1
-        history_log.push_back(record);          //Add to our list
+        history_log.push_back(record);          //Add to list
     }
 
     //Gets a previous answer by its number

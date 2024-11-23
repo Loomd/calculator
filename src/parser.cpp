@@ -23,31 +23,26 @@ namespace parser {
 						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
-	    				//break;
 	    			case '-':
 						result = calculator.subtraction(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
-	    				//break;
 	    			case '*':
 						result = calculator.multiplication(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
-	    				//break;
 	    			case '/':
 						result = calculator.division(operand_a, operand_b);
 						expression = std::to_string(operand_a) + " " + operation + " " + std::to_string(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
-	    				//break;
 	    			case '^':
 						result = calculator.exponentiation(operand_a, operand_b);
 	    				expression = std::to_string(operand_a) + "  " + operation + " "+ std::to_string(operand_b);
 						if(log_history) history.add_entry(expression, result);
 						return result;
-	    				//break;
 	    			default :
 	    				throw std::invalid_argument("Error: Invalid expression, use format: 'operand' 'operator' 'operand'.\033[0m");
 	    			}

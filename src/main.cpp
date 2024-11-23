@@ -21,7 +21,6 @@ int main(){
     bool running{true};
     std::string user_input;
     double result{0.0};
-	//int index{1};
     calculator.display_menu();
 
     while(running){

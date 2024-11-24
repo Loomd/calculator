@@ -15,7 +15,7 @@ namespace parser {
             
             //I felt keeping the pemdas map public was simple. Considering the scope of this program the potential overhead of a public member vs a static one I feel is negligible.
             //If you disagree, or feel i'm not appreciating this fact enough, i'd appreciate any mentoring on this topic.
-            std::map<std::string, int> Parser::pemdas = {
+            std::map<std::string, int> pemdas = {
                 {"+", 1}, //'+' has lowest precedence
                 {"-", 1}, //'-' has lowest precedence
                 {"*", 2}, //'*' has a higher precedence

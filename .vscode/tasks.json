@@ -8,8 +8,9 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${workspaceFolder}/src/main.cpp",
-                "${workspaceFolder}/src/calculator.cpp",
-                "${workspaceFolder}/src/history.cpp",
+                "${workspaceFolder}/src/ui.cpp",
+                "${workspaceFolder}/src/calculations.cpp",
+                "${workspaceFolder}/src/history_manager.cpp",
                 "${workspaceFolder}/src/parser.cpp",
                 "-o",
                 "${workspaceFolder}/main.exe"

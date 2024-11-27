@@ -10,10 +10,7 @@ namespace parser{
 
         public:
 
-            std::map<std::string, int> pemdas = {
-                {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},
-                {"^", 4}
-            };
+            static const std::map<std::string, int> pemdas;
 
             std::vector<std::string> tokenizeExpression(const std::string& user_input);
             std::vector<std::string> convertToPostfix(const std::vector<std::string>& token_vector);

@@ -23,6 +23,8 @@ namespace history_manager{
 		double use_previous_result(int index);
 		void clear_history();
         std::string format_result(const std::string& result);
+		void save_history();
+		void load_history();
 
     };
 

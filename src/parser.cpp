@@ -66,7 +66,7 @@ namespace parser{
 		 output.push_back(token_builder);					//By verifying the token_builder is not empty, and adding the token to the vector. i.e. '5 + 5 - 2' once the for loop iterates to the 2 at the end of the expression,
 															//there isn't another token to force the else block to run and flush the token into the vector. This takes care of that.
 		return output;			
-	}
+	}//tokenizeExpression().
 
 	/*
 	 * @function: convertToPostfix()
@@ -122,19 +122,19 @@ namespace parser{
 					throw std::invalid_argument("Mismatched parentheses in expression.");				//otherwise there was a mismatched paren.
 
 			}else
-				throw std::invalid_argument("Invalid token in expression: " + token);                 //handles any possibility of invalid tokens that somehow got parsed and passed to be arranged into RPN. 
+				throw std::invalid_argument("Invalid token in expression: " + token);                   //handles any possibility of invalid tokens that somehow got parsed and passed to be arranged into RPN. 
 		}
 
-		while(!operatorStack.empty()){																  //If there are any operators left in the stack
-			outputQueue.push_back(operatorStack.back());											  //push into ouputQueue and then pop it off the stack.
+		while(!operatorStack.empty()){																    //If there are any operators left in the stack
+			outputQueue.push_back(operatorStack.back());											    //push into ouputQueue and then pop it off the stack.
 			operatorStack.pop_back();
 		}
 
 		return outputQueue; 
-	}
+	}//convertToPostfix().
 
 
-	const std::map<std::string, int> Parser::pemdas = {												//This map houses the operators and their precedence values.							
+	const std::map<std::string, int> Parser::pemdas = {												    //This map houses the operators and their precedence values.							
         {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},
         {"^", 4}
     };

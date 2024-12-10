@@ -12,6 +12,7 @@
                 "${workspaceFolder}/src/calculations.cpp",
                 "${workspaceFolder}/src/history_manager.cpp",
                 "${workspaceFolder}/src/parser.cpp",
+                "${workspaceFolder}/src/base_conversion.cpp",
                 "-o",
                 "${workspaceFolder}/main.exe"
             ],

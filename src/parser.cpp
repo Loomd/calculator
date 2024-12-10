@@ -82,10 +82,12 @@ namespace parser{
 	 * 
 	 * - This function works in tandem with the tokenizer as a part of my shunting yard algorithm 
 	 *   implementation. However the shunting yard algo utilizes stacks and queues typically, I achieve 
-	 *   the same result here with vectors acting as my queue and my stack. which I learned that stacks 
-	 *   are a part of the STL and can utilize vectors as one of their underlying containers deriving 
-	 *   their member functions. Anyways, I use conditional branching and nested within the branches I 
-	 *   utilize while loops to pop operators off the stack and into the output queue.
+	 *   the same result here with vectors acting as my queue and my stack. 
+	 *   Stacks are a part of the STL and can utilize vectors as one of their underlying containers; deriving 
+	 *   their member functions.
+	 * 
+	 * - I use conditional branching and nested within the branches I utilize while loops to pop operators 
+	 *   off the stack and into the output queue.   
 	 */
 	std::vector<std::string> Parser::convertToPostfix(const std::vector<std::string>& token_vector){
 

@@ -4,6 +4,35 @@
 
 namespace base_conversion {
 
+
+    void get_base_info(){
+        std::cout<<"\033[32m=======================BINARY/DECIMAL CONVERTER=======================\n"
+                 <<"- Format: <base> <number>\n"
+                 <<"- Supported bases: 'bin' for binary, 'dec' for decimal\n"
+                 <<"- Examples: bin 1010 -> 10 or dec 42 -> 101010\n"
+                 <<"Enter conversion: \033[0m";
+
+        std::string capture_data;
+        getline(std::cin, capture_data);
+
+        if(capture_data.length() == 0) return;
+
+        std::string base{capture_data.substr(0, 3)};
+        std::string value{capture_data.substr(4)};
+
+        if(base == "bin"){
+            std::cout<<binary_to_base10(value)<<std::endl;
+        }
+        else if(base == "dec"){
+            std::cout<<base10_to_binary(value)<<std::endl;
+        }
+        else{
+            throw std::invalid_argument("Base not supported");
+        }
+
+    }
+
+
     int binary_to_base10(std::string& user_input){
 
         int base10_representation{0};

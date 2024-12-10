@@ -16,6 +16,7 @@ namespace base_conversion{
     int binary_to_base10(std::string& user_input);
     std::string base10_to_binary(std::string& user_input);
     void add_to_conversion_history(conversion& Conversion);
+    void get_base_info();
 };
 
 #endif

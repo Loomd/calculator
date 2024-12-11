@@ -10,10 +10,11 @@
  * 
  * Project Purpose:
  * This program was an attempt to learn and gain pratical knowledge of: 
- *  - user-defined classes, modular (files and folders) design, and a practical application of 
+ *  - user-defined classes, modular (files and folders) design, practical applications of 
  *    namesapces.
+ *  - Shunting Yard Algorithm.
  * 
- * Core Functionality:
+ * Core components:
  * - The program's functionality is housed within objects/classes and namespaces.
  * 1. Parser:
  *    - Contains a PEMDAS map (operators as keys, precedence as values) for handling precedence.
@@ -26,7 +27,16 @@
  *    - The history_manager class houses the file i/o functionality.
  *    - Provides functionality to display, save, and clear history.
  * 4. Calculations:
- *    - 
+ *    - Handles evaluating the equation,
+ *    - The algorithim which I used was shunting yard, and instead of a stack or queue I kept my containers 
+ *      less abstract or complex using strings and vectors.
+ * 5. base_conversions:
+ *    - This wasn't implemented as a class rather a namespace. 
+ *    - Provides for a binary -> decimal translation and a decimal -> binary translation.
+ * 6. Main:
+ *    - Entry point of the program, where I use a series of conditional branches to filter the user_input.
+ *    - Having the program logic encapsulated within the try catch serves to safely handle common errors.
+ * 
  */
 
 int main(){ 
